@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Prueba Backend Rappi</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+    <nav class="white lighten-1" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">
+                <IMG SRC="img/rappi_titulo.png" width="130" height="60">
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="index.html"></a></li>
+            </ul>
+
+            <ul id="nav-mobile" class="side-nav">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <br><br>
+            <h1 class="header center orange-text"> Prueba Rappi Backend</h1>
+            <div class="row center">
+                <h5 class="header col s12 light">FORMULARIO</h5>
+                 <h6 class="header col s12 light">Instrucciones (1- Agregar numero de casos  2- Agregar tamaño de matriz y operaciones  3- Agregar operaciones QUERY o UPDATE)</h6>
+            </div>
+            <div class="row center">
+                <form class="col s9" id="formulario1">
+                    <div class="row">
+                        <div class="row center">
+                            <h5 class="header col s6 light">Agregar Casos de Uso</h5>
+                        </div>
+                        <div class="input-field col s5">
+                            <i class="material-icons prefix">format_list_numbered</i>
+                            <input id="casos_uso" type="text" class="validate">
+                            <label class="active" for="casos_uso">Numero de Casos de uso</label>
+                        </div>
+                        <div id="boton_casoUso">
+                        <button type="button" class="waves-effect waves-light orange btn left" id="btn_cuso"  onclick="javascript:agregarCasoUso();"><i class="material-icons right">add</i>Agregar </button>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="row center">
+                            <h5 class="header col s6 light">Agregar Operaciones</h5>
+                        </div>
+                        <div class="input-field col s3">
+                            <i class="material-icons prefix">dialpad</i>
+                            <input id="tamano_matrix" type="text" class="validate">
+                            <label class="active" for="tamano_matrix">Tamaño matriz</label>
+                        </div>
+                        <div class="input-field col s4">
+                            <i class="material-icons prefix">forward_5</i>
+                            <input id="Operaciones" type="tel" class="validate">
+                            <label class="active" for="icon_telephone">Operaciones</label>
+                        </div>
+                                               
+                          <button type="button" class="waves-effect waves-light orange btn left" id="btn_oper"  onclick="javascript:agregarOperaciones();"><i class="material-icons right">add</i>Agregar </button>
+                    </div>
+
+                    <div class="row">
+                        <hr />
+                        <br />
+                        <div class="row center">
+                            <h5 class="header col s6 light">Agregar Query/Update</h5>
+                        </div>
+                        <div class="input-field col s3">
+                            <i class="material-icons prefix">gamepad</i>
+                            <input id="cordenadasA" type="text" class="validate">
+                            <label class="active" for="cordenadasA">Coordenadas A</label>
+                        </div>
+                        <div class="input-field col s3">
+                            <i class="material-icons prefix">gamepad</i>
+                            <input id="cordenadasB" type="tel" class="validate">
+                            <label class="active" for="cordenadasB">Coordenadas B</label>
+
+                        </div>
+
+                        <div class="input-field col s3">
+                            <i class="material-icons prefix">gamepad</i>
+                            <input id="Valor" type="tel" class="validate">
+                            <label class="active" for="Valor">Valor</label>
+
+                        </div>
+
+                        <div class="input-field col s3">
+                            <select id="tipoOperacionSelect">
+                                <option value="" disabled selected>Selecciona Operacion</option>
+                                <option value="UPDATE">Update</option>
+                                <option value="QUERY">Query</option>
+                            </select>
+
+                        </div>
+                      
+                        
+                        <button type="button" class="waves-effect waves-light orange btn left" id="btn_opcion"  onclick="javascript:agregarOpcion();"><i class="material-icons right">add</i>Agregar </button>
+                        
+                    </div>
+                    <br />
+                    <hr />
+                </form>
+                <div class="input-field col s12">
+
+                    <button type="button" class="waves-effect waves-light red btn center" id="btn_borrar"  onclick="javascript:borrarTodo();"><i class="material-icons right">delete_forever</i>Borrar Todo </button>
+                     <button type="button" class="waves-effect waves-light green btn center" id="btn_generar"  onclick="javascript:ejecutar();"><i class="material-icons right">play_arrow</i>Generar </button>
+                </div>
+                <div class="input-field col s12">
+                    <textarea id="entrada" class="materialize-textarea" data-length="120" readonly></textarea>
+                    <label for="entrada">Datos de entrada</label>
+                </div>
+                <div class="input-field col s12">
+                    <textarea id="salida" class="materialize-textarea" data-length="1000" readonly></textarea>
+                    <label for="salida">Respuesta</label>
+                </div>
+                <br><br>
+
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="section">
+
+                <!--   Icon Section   -->
+                <div class="row">
+                </div>
+
+            </div>
+            <br><br>
+        </div>
+
+        <footer class="page-footer blue">
+
+            <div class="footer-copyright">
+                <div class="container">
+                    Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Ing. Gabriel Pérez - Caracas Venezuela</a>
+                </div>
+            </div>
+        </footer>
+
+        <!--  Scripts-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="js/materialize.min.js"></script>
+        <script src="js/init.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="js/controlador.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('select').material_select();
+            });
+        </script>
+</body>
+</html>
